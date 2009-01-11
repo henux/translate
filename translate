@@ -1,0 +1,102 @@
+#!/usr/bin/env python
+#
+# translate -- Google Translator command line interface.
+#
+# Copyright (C) 2009 Henri Hakkinen.
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+# Supported languages (as of January 11, 2009):
+#
+#  auto   Detect language
+#
+#  ar     Arabic
+#  bg     Bulgarian
+#  ca     Catalan
+#  zh-CN  Chinese (Simplified)
+#  zh-TW  Chinese (Traditional) (only as destination languge)
+#  hr     Croatian
+#  cs     Czech
+#  da     Danish
+#  nl     Dutch
+#  en     English
+#  tl     Filipino
+#  fi     Finnish
+#  fr     French
+#  de     German
+#  el     Greek
+#  iw     Hebrew
+#  hi     Hindi
+#  id     Indonesian
+#  it     Italian
+#  ja     Japanese
+#  ko     Korean
+#  lv     Latvian
+#  lt     Lithuanian
+#  no     Norwegian
+#  pl     Polish
+#  pt     Portuguese
+#  ro     Romanian
+#  ru     Russian
+#  sr     Serbian
+#  sk     Slovak
+#  sl     Slovenian
+#  es     Spanish
+#  sv     Swedish
+#  uk     Ukrainian
+#  vi     Vietnamese
+
+import sys
+import urllib
+import re
+
+from httplib import HTTPConnection
+
+# Handle command line options.
+if len(sys.argv) < 2:
+    print "Usage: translate FROM TO WORDS..."
+    print "Translates WORDS from language FROM to language TO. Uses"
+    print "Google Translator as the translator backend."
+    print "\nCopyright (C) 2009 Henri Hakkinen."
+    print "Report bugs to <henux@users.sourceforge.net>."
+    sys.exit(1)
+
+FROM  = sys.argv[1]
+TO    = sys.argv[2]
+WORDS = sys.argv[3:]
+
+# If no words are given in the command line; read from stdin.
+if len(WORDS) == 0:
+    for line in sys.stdin:
+        WORDS += line.split()
+
+# Construct the message body.
+body = "sl=%s&tl=%s&text=%s" % (FROM, TO, WORDS[0])
+for w in WORDS[1:]:
+    body += "+%s" % (w)
+
+# Connect to translate.google.com and request result.
+conn = HTTPConnection("translate.google.com")
+conn.request("POST", "/translate_t", body)
+
+resp = conn.getresponse()
+if resp.status != 200:
+    print "Server responded with error code %d." % (resp.status)
+    sys.exit(1)
+
+# Parse the result.
+match = re.search("<div id=result_box[^>]*>([^<]*)</div>", resp.read())
+conn.close()
+if not match: sys.exit(1)
+print match.group(1)
