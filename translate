@@ -17,46 +17,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-# Supported languages (as of January 11, 2009):
-#
-#  auto   Detect language
-#
-#  ar     Arabic
-#  bg     Bulgarian
-#  ca     Catalan
-#  zh-CN  Chinese (Simplified)
-#  zh-TW  Chinese (Traditional) (only as destination languge)
-#  hr     Croatian
-#  cs     Czech
-#  da     Danish
-#  nl     Dutch
-#  en     English
-#  tl     Filipino
-#  fi     Finnish
-#  fr     French
-#  de     German
-#  el     Greek
-#  iw     Hebrew
-#  hi     Hindi
-#  id     Indonesian
-#  it     Italian
-#  ja     Japanese
-#  ko     Korean
-#  lv     Latvian
-#  lt     Lithuanian
-#  no     Norwegian
-#  pl     Polish
-#  pt     Portuguese
-#  ro     Romanian
-#  ru     Russian
-#  sr     Serbian
-#  sk     Slovak
-#  sl     Slovenian
-#  es     Spanish
-#  sv     Swedish
-#  uk     Ukrainian
-#  vi     Vietnamese
-
 import sys
 import urllib
 import re

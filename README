@@ -1,6 +1,54 @@
 translate README
 
+Copyright (C) 2009 Henri Häkkinen.
+
 `translate` is a command line interface for the Google Translator service
 written in Python programming language.
+
+Usage: translate FROM TO [WORDS...]
+
+If WORDS are not given, reads from stdin.
+
+As of January 11 2009, Google Translator supports following languages:
+
+  ar     Arabic
+  bg     Bulgarian
+  ca     Catalan
+  zh-CN  Chinese (Simplified)
+  zh-TW  Chinese (Traditional) (only as destination languge)
+  hr     Croatian
+  cs     Czech
+  da     Danish
+  nl     Dutch
+  en     English
+  tl     Filipino
+  fi     Finnish
+  fr     French
+  de     German
+  el     Greek
+  iw     Hebrew
+  hi     Hindi
+  id     Indonesian
+  it     Italian
+  ja     Japanese
+  ko     Korean
+  lv     Latvian
+  lt     Lithuanian
+  no     Norwegian
+  pl     Polish
+  pt     Portuguese
+  ro     Romanian
+  ru     Russian
+  sr     Serbian
+  sk     Slovak
+  sl     Slovenian
+  es     Spanish
+  sv     Swedish
+  uk     Ukrainian
+  vi     Vietnamese
+
+Use the keyword 'auto' for automatic language detection.
+
+Report bugs to <henux@users.sourceforge.net>.
 
 Have fun!
