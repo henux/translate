@@ -25,7 +25,7 @@ from httplib import HTTPConnection
 
 # Handle command line options.
 if len(sys.argv) < 3:
-    print "Usage: translate FROM TO WORDS..."
+    print "Usage: translate FROM TO [WORDS...]"
     print "Translates WORDS from language FROM to language TO. Uses"
     print "Google Translator as the translator backend."
     print "\nCopyright (C) 2009 Henri Hakkinen."
