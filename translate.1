@@ -1,0 +1,101 @@
+.TH "TRANSLATE" "1" "Januart 2009" "Version 20090111" "User Commands"
+.SH NAME
+translate \- Google Translator command line interface
+.SH SYNOPSIS
+.B translate
+.I FROM
+.I TO
+.I WORDS...
+.SH DESCRIPTION
+Translates WORDS from the language FROM to the language TO and prints them to stdout.
+FROM and TO languages must be given as language code identifiers (see below).
+If no WORDS are given, then words are read from stdin.
+If some WORDS are not recognized, then they are printed as verbatim.
+.SH SUPPORTED LANGUAGES
+As of Januart 11 2009, Google Translator suppors the following languages:
+
+ ar
+Arabic
+ bg
+Bulgarian
+ ca
+Catalan
+ zh-CN
+Simplified Chinese
+ zh-TW
+Traditional Chines (only as destination languge)
+ hr
+Croatian
+ cs
+Czech
+ da
+Danish
+ nl
+Dutch
+ en
+English
+ tl
+Filipino
+ fi
+Finnish
+ fr
+French
+ de
+German
+ el
+Greek
+ iw
+Hebrew
+ hi
+Hindi
+ id
+Indonesian
+ it
+Italian
+ ja
+Japanese
+ ko
+Korean
+ lv
+Latvian
+ lt
+Lithuanian
+ no
+Norwegian
+ pl
+Polish
+ pt
+Portuguese
+ ro
+Romanian
+ ru
+Russian
+ sr
+Serbian
+ es
+Spanish
+ sv
+Swedish
+ uk
+Ukrainian
+ vi
+Vietnamese
+.SH EXAMPLE
+.TP
+.B translate fi en ohjelmisto
+Translate the Finnish word "ohjelmisto" into English.
+.TP
+.B translate en de < foo
+Translates the file
+.I foo
+from English to Germany.
+.SH AUTHOR
+Written by Henri Hakkinen.
+.SH REPORTING BUGS
+Report bugs to <henux@users.sourceforge.net>.
+.SH COPYRIGHT
+Copyright \(co 2009 Henri Hakkinen.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
+.PP
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
