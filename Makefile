@@ -8,11 +8,14 @@ DOCDIR=$(PREFIX)/share/doc/translate
 .PHONY: install uninstall
 
 install:
-	install -D -m755 translate $(BINDIR)/translate
-	install -D -m644 translate.1 $(MANDIR)/translate.1
-	install -D -m644 README $(DOCDIR)/README
+	gzip -c translate.1 > translate.1.gz
+	install -m755 -t $(BINDIR) translate
+	install -m644 -t $(MANDIR) translate.1.gz
+	install -m755 -d $(DOCDIR)
+	install -m644 -t $(DOCDIR) README
+	rm -f translate.1.gz
 
 uninstall:
-	rm -rf $(BINDIR)/translate
-	rm -rf $(MANDIR)/translate.1 $(MANDIR)/translate.1.gz
+	rm -f $(BINDIR)/translate
+	rm -f $(MANDIR)/translate.1.gz
 	rm -rf $(DOCDIR)
